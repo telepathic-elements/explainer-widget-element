@@ -14,19 +14,20 @@
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
             <h4>${source.className}</h4>
+            <h5>${source.tagName}</h5>
+            <h6>${source.outerHTML}</h6>
             <p>${source.description}</p>
+            
+        </div>
+        <div class="mdl-card__actions">
             <details>
                 <summary>${source.className} JS</summary>
-                <textarea value="${source.js}" class="mdl-textfield__input" rows="${source.jsCount}" disabled></textarea>
+                <textarea value="${source.code}" class="mdl-textfield__input" rows="${source.jsCount}" disabled></textarea>
             </details>
             <details>
                     <summary>${source.className} HTML Source Code</summary>
                     <textarea value="${source.html}" class="mdl-textfield__input" rows="${source.htmlCount}" disabled></textarea>
-            </details>
-               
-        </div>
-        <div class="mdl-card__actions">
-            
+            </details>      
         </div>
     </div>
 </section>
