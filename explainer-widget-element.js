@@ -20,6 +20,10 @@ export default class ExplainerWidgetElement extends TelepathicElement{
     }
 
     async init(){
+        
+    }
+
+    async onReady(){
         this.toExplain = this.firstElementChild;
         console.log("explainer widget explaining: ",this.toExplain);
         this.source.tagName = this.toExplain.tagName.toLowerCase();
