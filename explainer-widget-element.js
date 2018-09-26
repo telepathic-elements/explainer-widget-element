@@ -39,7 +39,7 @@ export default class ExplainerWidgetElement extends TelepathicElement{
         this.source.className = window[this.source.tagName]; 
         this.source.templateFileName = window[this.source.className];
         this.source.html = window[this.source.templateFileName];
-        if(!this.source.html){
+        if(!this.source.html || this.source.html == "undefined"){
             this.source.html = await this.loadFile(this.source.templateFileName);
         }
         this.source.jsCount = this.source.code.toString().split(/\r\n|\r|\n/).length + 1;
