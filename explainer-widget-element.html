@@ -13,13 +13,13 @@
     }
 </style>
 <section>
+    <slot name="source"></slot>
     <div class="row">
         <div class="paper">
             <h4>${source.className}</h4>
             <h5>${source.tagName}</h5>
             <h6>${source.outerHTML}</h6>
             <p>${source.description}</p>
-            
         </div>
         <div class="paper">
             <details>

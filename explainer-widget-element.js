@@ -3,8 +3,9 @@ import {TelepathicElement} from "../telepathic-element/telepathic-element.js";
 export default class ExplainerWidgetElement extends TelepathicElement{
     static describe(){return `ExplainerWidgetElement provides a widget that shows this source code of any telepathic-element.`};
     constructor(){
-        super();
+        //super(null,false, true);
         //Forward declare template vars
+        super();
         this.source ={
             code : "",
             jsCount : 30,
@@ -16,15 +17,15 @@ export default class ExplainerWidgetElement extends TelepathicElement{
             html : ""
 
         }
-        this.toExplain = {}; 
-    }
-
-    async init(){
+        this.toExplain = {};
         
+         
     }
 
     async onReady(){
-        this.toExplain = this.firstElementChild;
+        
+        let slot = this.$.querySelector('slot');
+        this.toExplain = slot.assignedNodes()[0];
         console.log("explainer widget explaining: ",this.toExplain);
         this.source.tagName = this.toExplain.tagName.toLowerCase();
         console.log("source before: ",this.source);
@@ -35,8 +36,6 @@ export default class ExplainerWidgetElement extends TelepathicElement{
     }
 
     async prepSource(){
-        //this.toExplain has likely changed by the time we get here
-        this.toExplain = this.firstElementChild;
         this.source.code = window.customElements.get(this.source.tagName);    
         this.source.outerHTML  = this.toExplain.outerHTML;
         this.source.html = this.toExplain.innerHTML;
@@ -47,6 +46,7 @@ export default class ExplainerWidgetElement extends TelepathicElement{
         console.log(this.source.tagName+" is ",this.source.code);
         this.source.description = this.source.code.describe();
         console.log("source after: ",this.source);
+        this.removeChild(this.querySelector(this.source.tagName));
     }
 }
 
