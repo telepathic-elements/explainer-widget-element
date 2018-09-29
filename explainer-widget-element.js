@@ -9,12 +9,12 @@ export default class ExplainerWidgetElement extends TelepathicElement{
         this.source ={
             code : "",
             jsCount : 30,
-            htmlCount : 30,
+            lineCount : 30,
             description : "",
             className : "",
             tagName : "",
             outerHTML : "",
-            html : ""
+            template : ""
 
         }
         this.toExplain = {};
@@ -33,20 +33,22 @@ export default class ExplainerWidgetElement extends TelepathicElement{
     }
 
     async prepSource(){
+        /*
         this.source.code = window.customElements.get(this.source.tagName);    
         this.source.outerHTML  = this.toExplain.outerHTML;
-        this.source.html = this.toExplain.innerHTML;
-        this.source.className = window[this.source.tagName]; 
-        this.source.templateFileName = window[this.source.className];
-        this.source.html = window[this.source.templateFileName];
-        if(!this.source.html || this.source.html == "undefined"){
-            this.source.html = await this.loadFile(this.source.templateFileName);
+        this.source.className = this.toExplain.className; 
+        this.source.templateFileName = toExplain.templateFileName;
+        this.source.template = this.toExplain.template;
+        if(!this.source.template || this.source.template == "undefined"){
+            this.source.template = await this.loadFile(this.source.templateFileName);
         }
         this.source.jsCount = this.source.code.toString().split(/\r\n|\r|\n/).length + 1;
+        this.source.lineCount = this.source.template.split(/\r\n|\r|\n/).length + 1;
         console.log(this.source.tagName+" is ",this.source.code);
         this.source.description = this.source.code.describe();
         console.log("source after: ",this.source);
         this.removeChild(this.querySelector(this.source.tagName));
+        */
     }
 }
 
